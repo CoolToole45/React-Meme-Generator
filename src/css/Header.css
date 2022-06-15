@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    color: #fff;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title h1 {
+    font-size: 20px;
+}
+
+.title img {
+    width: 30px;
+    height: 26px;
+    margin-right: 1rem;
+}
+
+.module-info h2 {
+    font-size: 15px;
+}
