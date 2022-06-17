@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Meme.css";
-import memesData from "../memesData";
 
 export default function Meme() {
     const [meme, setMeme] = React.useState({
@@ -8,6 +7,25 @@ export default function Meme() {
         bottomText: "",
         randomImage: ""
     });
+
+    const [allMemes, setAllMemes] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => setAllMemes(data.data.memes))
+    }, [])
+
+
+
+    function getRandomImage() {
+        const randomNumber = Math.floor(Math.random() * allMemes.length);
+        const randomUrl = allMemes[randomNumber].url
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            randomImage: randomUrl
+        }));
+    }
 
     function handleOnChage(event) {
         const {name, value} = event.target;
@@ -18,19 +36,7 @@ export default function Meme() {
             }
         })
     }
-
-    const [allMemeImages, setAllMemeImages] = React.useState(memesData);
-
-    function getRandomImage() {
-        const memesArray = allMemeImages.data.memes;
-        const randomNumber = Math.floor(Math.random() * memesArray.length);
-        const randomUrl = memesArray[randomNumber].url
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            randomImage: randomUrl
-        }));
-    }
-
+    
     return (
         <main>
             <div className="controls">
