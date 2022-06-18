@@ -61,7 +61,8 @@ export default function Meme() {
             <div className="img-container">
                 <img 
                 src={meme.randomImage}
-                id="memeImage"/>
+                id="memeImage"
+                alt=""/>
                 <h2 className="meme-text top">{meme.topText}</h2>
                 <h2 className="meme-text bottom">{meme.bottomText}</h2>
             </div>
